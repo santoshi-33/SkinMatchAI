@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SkinMatch AI - Results</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+
+    <h2 class="text-center mb-4">SkinMatch Results</h2>
+
+    <div class="text-center mb-4">
+      <img src="/{{ image_path }}" class="img-thumbnail" width="250">
+    </div>
+
+    <div class="card p-3 mb-4 shadow-sm">
+      <h4>Detected Skin Type:</h4>
+      <p class="fs-5"><span class="badge bg-info text-dark">{{ skin_type | capitalize }}</span></p>
+    </div>
+
+    <div class="card p-4 shadow-sm">
+      <h4>Recommended Products:</h4>
+      <ul class="list-group mt-3">
+        {% for item in recommendations %}
+          <li class="list-group-item">
+            <h5>{{ item.Brand }}: {{ item.Name }}</h5>
+            <p><strong>Label:</strong> {{ item.Label }}</p>
+            <p><strong>Ingredients:</strong> {{ item.Ingredients }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="/" class="btn btn-secondary">Upload Another Photo</a>
+    </div>
+  </div>
+</body>
+</html>
